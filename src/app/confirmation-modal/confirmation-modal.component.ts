@@ -6,13 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./confirmation-modal.component.css']
 })
 export class ConfirmationModalComponent implements OnInit {
-  modalInstance
+  modalInstance;
   constructor() { }
 
   ngOnInit() {
   }
-  yes(){
-    this.modalInstance.close("yes");
+  yes() {
+    this.modalInstance.close('yes');
  }
+
+ cancel() {
+  this.modalInstance.close('cancel');
+}
+
 
 }

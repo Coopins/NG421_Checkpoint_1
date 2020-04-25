@@ -1,6 +1,45 @@
-<div class="view">
-    <label>{{todo.title}}</label>
-    <div class="float-right">
-        <button type="button" (click)= deleteTodo(todo) class="btn btn-danger btn-sm">Delete</button>
+<div class="view mx-5">
+    <div class="d-flex flex-column justify-content-center">
+      <label (dblclick)="isEditing = true">{{ todo.title }}</label>
+      <input
+        type="text"
+        *ngIf="isEditing"
+        [(ngModel)]="todo.title"
+        (keyup.enter)="isEditing = false"/>
+  
+      
+      <label class="flex-shrink-1">{{ todo.description }}</label>
+      <div class="d-flex flex-fill flex-row-reverse my-3">
+        <select [(ngModel)]="todo.status">
+          <option *ngFor="let status of getStatuses()">
+            {{ status }}
+          </option>
+        </select>
+      </div>
     </div>
-</div>
+  
+    <div>
+      <div class="col-sm">
+        <div class="float-left">
+          <button
+            type="button"
+            (click)="deleteTodo(todo)"
+            class="btn btn-danger btn-sm"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="float-right">
+        <button
+          type="button"
+          (click)="TodoEdit(todo)"
+          class="btn btn-primary btn"
+        >
+          Add Description
+        </button>
+      </div>
+    </div>
+  </div>
